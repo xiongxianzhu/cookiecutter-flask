@@ -1,2 +1,0 @@
-# cookiecutter-flask
-Cookiecutter可以让你快速从模板中建立工程，cookiecutter-flask则是Flask的模板，可以快速生成Flask大型项目模板。
