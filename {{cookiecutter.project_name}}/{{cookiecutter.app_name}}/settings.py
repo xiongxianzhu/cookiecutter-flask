@@ -3,10 +3,12 @@
 import os
 
 
-class Config(object):
+class BaseConfig(object):
     """Base configuration."""
 
-    SECRET_KEY = os.environ.get('{{cookiecutter.app_name | upper}}_SECRET', 'secret-key')  # TODO: Change me
+    # difference between os.getenv() and os.environ.get()
+    SECRET_KEY = os.environ.get('{{cookiecutter.project_name | upper}}_SECRET', 'secret-key')  # TODO: Change me
+    # SECRET_KEY = os.getenv('{{cookiecutter.project_name | upper}}_SECRET', default='secret-key')
     APP_DIR = os.path.abspath(os.path.dirname(__file__))  # This directory
     PROJECT_ROOT = os.path.abspath(os.path.join(APP_DIR, os.pardir))
     BCRYPT_LOG_ROUNDS = 13
@@ -17,7 +19,7 @@ class Config(object):
     WEBPACK_MANIFEST_PATH = 'webpack/manifest.json'
 
 
-class ProdConfig(Config):
+class ProdConfig(BaseConfig):
     """Production configuration."""
 
     ENV = 'prod'
@@ -26,7 +28,7 @@ class ProdConfig(Config):
     DEBUG_TB_ENABLED = False  # Disable Debug toolbar
 
 
-class DevConfig(Config):
+class DevConfig(BaseConfig):
     """Development configuration."""
 
     ENV = 'dev'
@@ -39,7 +41,7 @@ class DevConfig(Config):
     CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
 
 
-class TestConfig(Config):
+class TestConfig(BaseConfig):
     """Test configuration."""
 
     TESTING = True

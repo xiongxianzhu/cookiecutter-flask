@@ -6,7 +6,7 @@ MarkupSafe==1.0
 Werkzeug==0.14.1
 Jinja2==2.10
 itsdangerous==0.24
-click>=5.0
+click==6.7
 
 # Database
 Flask-SQLAlchemy==2.3.2
@@ -21,7 +21,7 @@ Flask-WTF==0.14.2
 WTForms==2.1
 
 # Deployment
-gunicorn>=19.1.1
+uwsgi==2.0.17
 
 # Webpack
 flask-webpack==0.1.0
@@ -31,7 +31,7 @@ Flask-Login==0.4.1
 Flask-Bcrypt==0.7.1
 
 # Caching
-Flask-Caching>=1.0.0
+Flask-Caching==1.3.3
 
 # Debug toolbar
 Flask-DebugToolbar==0.10.1

@@ -1,4 +1,11 @@
 {
+    "full_name": "zhuxiongxian",
+    "email": "zhuxiongxian@gmail.com",
     "project_name": "xx_project",
-    "app_name": "xx_app"
+    "app_name": "xx_app",
+    "project_short_description": "A flasky app.",
+    "version": "0.1.0",
+    "_copy_without_render": [
+        "*.html"
+    ]
 }
