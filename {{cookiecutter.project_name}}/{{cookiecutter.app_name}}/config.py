@@ -40,6 +40,17 @@ class DevConfig(Config):
     DEBUG_TB_ENABLED = True
     CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
 
+    # mail
+    MAIL_SERVER = 'localhost'
+    MAIL_PORT = 25
+    MAIL_USERNAME = 'username'
+    MAIL_PASSWORD = 'password'
+
+    # celery
+    CELERY_BROKER_URL = 'redis://localhost'
+    CELERY_BACKEND = 'redis://localhost'
+
+
 
 class TestConfig(Config):
     """Test configuration."""

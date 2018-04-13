@@ -11,6 +11,9 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from flask_webpack import Webpack
 from flask_wtf.csrf import CSRFProtect
+from flask_mail import Mail
+from flask_restful import Api
+from flask_celery import Celery
 
 bcrypt = Bcrypt()
 csrf_protect = CSRFProtect()
@@ -22,3 +25,6 @@ migrate = Migrate()
 cache = Cache()
 debug_toolbar = DebugToolbarExtension()
 webpack = Webpack()
+mail = Mail()
+rest_api = Api()
+celery = Celery()

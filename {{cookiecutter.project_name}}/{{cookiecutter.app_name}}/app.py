@@ -5,7 +5,7 @@ from flask import Flask, render_template
 
 from {{cookiecutter.app_name}} import commands
 from {{cookiecutter.app_name}}.models import User
-from {{cookiecutter.app_name}}.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login_manager, migrate, webpack, jwt, ma
+from {{cookiecutter.app_name}}.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login_manager, migrate, webpack, jwt, ma, mail, rest_api, celery
 from {{cookiecutter.app_name}}.config import ProdConfig
 
 
@@ -38,6 +38,9 @@ def register_extensions(app):
     # Flask-SQLAlchemy must be initialized before Flask-Marshmallow
     db.init_app(app)
     ma.init_app(app)
+    mail.init_app(app)
+    rest_api.init_app(app)
+    celery.init_app(app)
 
 
 def register_blueprints(app):

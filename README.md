@@ -11,6 +11,20 @@ $ cookiecutter https://github.com/xiongxianzhu/cookiecutter-flask.git
 
 你将会被要求填写一些基本的项目信息。
 
+## 在开发环境运行项目
+
+```
+dotenv run
+flask run
+```
+
+## 在生产环境运行项目
+
+```
+dotenv run
+flask run
+```
+
 ## 关于cookiecutter
 
 - Documentation: https://cookiecutter.readthedocs.io
