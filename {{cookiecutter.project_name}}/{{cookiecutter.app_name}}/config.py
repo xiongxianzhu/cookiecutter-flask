@@ -3,7 +3,7 @@
 import os
 
 
-class BaseConfig(object):
+class Config(object):
     """Base configuration."""
 
     # difference between os.getenv() and os.environ.get()
@@ -19,7 +19,7 @@ class BaseConfig(object):
     WEBPACK_MANIFEST_PATH = 'webpack/manifest.json'
 
 
-class ProdConfig(BaseConfig):
+class ProdConfig(Config):
     """Production configuration."""
 
     ENV = 'prod'
@@ -28,7 +28,7 @@ class ProdConfig(BaseConfig):
     DEBUG_TB_ENABLED = False  # Disable Debug toolbar
 
 
-class DevConfig(BaseConfig):
+class DevConfig(Config):
     """Development configuration."""
 
     ENV = 'dev'
@@ -41,7 +41,7 @@ class DevConfig(BaseConfig):
     CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
 
 
-class TestConfig(BaseConfig):
+class TestConfig(Config):
     """Test configuration."""
 
     TESTING = True

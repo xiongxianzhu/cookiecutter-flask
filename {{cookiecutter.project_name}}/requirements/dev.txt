@@ -5,6 +5,7 @@
 pytest==3.5.0
 WebTest==2.0.29
 factory-boy==2.10.0
+tox
 
 # Lint and code style
 flake8==3.5.0

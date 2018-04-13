@@ -6,14 +6,17 @@ MarkupSafe==1.0
 Werkzeug==0.14.1
 Jinja2==2.10
 itsdangerous==0.24
+wheel
 click==6.7
+Flask-Assets
 
-# Database
+# Database or ORM
 Flask-SQLAlchemy==2.3.2
 psycopg2==2.7.4
 SQLAlchemy==1.2.6
 mongoengine==0.15.0
 flask-mongoengine=0.9.5
+marshmallow
 
 
 # Migrations
@@ -32,9 +35,11 @@ flask-webpack==0.1.0
 # Auth
 Flask-Login==0.4.1
 Flask-Bcrypt==0.7.1
+Flask-JWT-Extended
 
 # Caching
 Flask-Caching==1.3.3
+Flask-Cache
 redis==2.10.6
 
 # Debug toolbar
@@ -42,3 +47,33 @@ Flask-DebugToolbar==0.10.1
 
 # shell
 ipython
+
+# admin
+Flask-Admin
+
+# mail
+Flask-Mail
+
+# api
+Flask-RESTful
+flask-marshmallow
+
+# cryptology
+passlib
+
+# web
+requests
+httpie
+
+# system
+fabric
+
+# other
+# Flask-Babel
+Flask-BabelEx
+Flask-Gravatar
+Flask-Uploads
+Flask-Script
+Pillow
+
+

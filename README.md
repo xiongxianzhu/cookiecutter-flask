@@ -16,3 +16,9 @@ $ cookiecutter https://github.com/xiongxianzhu/cookiecutter-flask.git
 - Documentation: https://cookiecutter.readthedocs.io
 - GitHub: https://github.com/audreyr/cookiecutter
 - PyPI: https://pypi.python.org/pypi/cookiecutter
+
+## 参考项目
+
+- cookiecutter-flask: https://github.com/sloria/cookiecutter-flask
+- cookiecutter-flask-restful: https://github.com/karec/cookiecutter-flask-restful
+
