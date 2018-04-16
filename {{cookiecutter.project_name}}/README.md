@@ -59,7 +59,7 @@ pip install gunicorn
 gunicorn {{cookiecutter.app_name}}.wsgi:app
 ```
 
-就这样! Gunicorn以端口`8000`运行项目。
+就这样! gunicorn以端口`8000`运行项目。
 
 ### 用uwsgi作为应用服务器运行
 
@@ -70,4 +70,4 @@ pip install uwsgi
 uwsgi --http 127.0.0.1:5000 --module {{cookiecutter.app_name}}.wsgi:app
 ```
 
-就这样! Gunicorn以端口`5000`运行项目。
+就这样! uwsgi以端口`5000`运行项目。
