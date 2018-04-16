@@ -47,8 +47,8 @@ class DevConfig(Config):
     MAIL_PASSWORD = 'password'
 
     # celery
-    CELERY_BROKER_URL = 'redis://localhost'
-    CELERY_BACKEND = 'redis://localhost'
+    CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+    CELERY_BACKEND = 'amqp://guest:guest@localhost:5672//'
 
 
 
