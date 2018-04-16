@@ -17,6 +17,7 @@ p.s. 如果使用了官方pypi源`https://pypi.python.org/simple`, 则在执行`
 
 若项目根目录还有.env文件， 则在执行`pipenv --three`命令创建虚拟环境时也会将.env文件里的环境变量添加到虚拟环境当中。
 检测虚拟环境变量是否生效， 可以用`echo $环境变量`查看， 如下：
+
 ```
 $ pipenv shell
 (env)$ echo $FLASK_APP
