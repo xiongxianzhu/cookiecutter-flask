@@ -35,8 +35,6 @@ pipenv install
 
 项目提供了一个简单的wsgi入口，例如使用gunicorn或uwsgi运行。
 
-For gunicorn：
-
 ```
 pipenv install gunicorn
 gunicorn {{cookiecutter.app_name}}.wsgi:app
