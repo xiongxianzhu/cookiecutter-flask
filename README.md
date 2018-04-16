@@ -14,14 +14,16 @@ $ cookiecutter https://github.com/xiongxianzhu/cookiecutter-flask.git
 ## 在开发环境运行项目
 
 ```
-dotenv run
+pipenv --three
+pipenv install
 flask run
 ```
 
 ## 在生产环境运行项目
 
 ```
-dotenv run
+pipenv --three
+pipenv install
 flask run
 ```
 
