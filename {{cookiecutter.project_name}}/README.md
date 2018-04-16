@@ -38,10 +38,36 @@ pipenv install
 flask run
 ```
 
+就这样! 项目以端口`5000`运行。
+
 ## 在生产环境运行项目
 
 ```
 pipenv --three
 pipenv install
-flask run
 ```
+
+
+### 用gunicorn作为应用服务器运行
+
+项目提供了一个简单的wsgi入口，例如使用gunicorn或uwsgi运行。
+
+For gunicorn：
+
+```
+pip install gunicorn
+gunicorn {{cookiecutter.app_name}}.wsgi:app
+```
+
+就这样! Gunicorn以端口`8000`运行项目。
+
+### 用uwsgi作为应用服务器运行
+
+几乎和gunicorn一样：
+
+```
+pip install uwsgi
+uwsgi --http 127.0.0.1:5000 --module {{cookiecutter.app_name}}.wsgi:app
+```
+
+就这样! Gunicorn以端口`5000`运行项目。
