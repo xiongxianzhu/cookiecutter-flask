@@ -13,7 +13,7 @@ pipenv --three
 sed -i 's/https:\/\/pypi.python.org/http:\/\/mirrors.aliyun.com\/pypi/g' Pipfile
 ```
 
-p.s. 如果使用了官方pypi源`https://pypi.python.org/simple`, 则在执行`pipenv install`命令会生成Pipfile.lock。如果使用非官方pypi源， 则安装库时用`pipenv install --skip-lock`
+p.s. 如果使用了官方pypi源`https://pypi.python.org/simple`, 则在执行`pipenv install`命令会生成`Pipfile.lock`。如果使用非官方pypi源， 则安装库时用`pipenv install --skip-lock`, 且不会生成`Pipfile.lock`文件。
 
 若项目根目录还有.env文件， 则在执行`pipenv --three`命令创建虚拟环境时也会将.env文件里的环境变量添加到虚拟环境当中。
 检测虚拟环境变量是否生效， 可以用`echo $环境变量`查看， 如下：
@@ -27,7 +27,7 @@ autoapp.py
 $ 
 ```
 
-为了项目能生成Pipfile.locl文件， 我们默认使用官方的pypi源`https://pypi.python.org/simple`。
+为了项目能生成`Pipfile.lock`文件， 我们默认使用官方的pypi源`https://pypi.python.org/simple`。
 
 ## 在开发环境运行项目
 
