@@ -42,6 +42,8 @@ flask run
 
 ## 在生产环境运行项目
 
+先将.env文件里的环境变量`FLASK_DEBUG`设置为`0`。
+
 ```
 pipenv --three
 pipenv install
