@@ -16,7 +16,8 @@ from flask_mail import Mail
 from flask_restful import Api
 from flask_celery import Celery
 
-# pwd_context = CryptContext(schemes=['pbkdf2_sha256'], deprecated='auto')bcrypt = Bcrypt()
+# pwd_context = CryptContext(schemes=['pbkdf2_sha256'], deprecated='auto')
+bcrypt = Bcrypt()
 csrf_protect = CSRFProtect()
 login_manager = LoginManager()
 db = SQLAlchemy()
