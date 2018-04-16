@@ -9,7 +9,7 @@ from flask_jwt_extended import (
 )
 
 from {{cookiecutter.app_name}}.models import User
-from {{cookiecutter.app_name}}.extensions import bcrypt, jwt
+from {{cookiecutter.app_name}}.extensions import bcrypt, jwt, csrf_protect
 # from {{cookiecutter.app_name}}.extensions import pwd_context
 
 
@@ -17,6 +17,7 @@ blueprint = Blueprint('auth', __name__, url_prefix='/auth')
 
 
 @blueprint.route('/login', methods=['POST'])
+@csrf_protect.exempt
 def login():
     """Authenticate user and return token
     """
@@ -45,6 +46,7 @@ def login():
 
 @blueprint.route('/refresh', methods=['POST'])
 @jwt_refresh_token_required
+@csrf_protect.exempt
 def refresh():
     current_user = get_jwt_identity()
     ret = {
