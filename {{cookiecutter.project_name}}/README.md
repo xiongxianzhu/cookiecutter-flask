@@ -55,7 +55,7 @@ pipenv install
 For gunicorn：
 
 ```
-pip install gunicorn
+pipenv install gunicorn
 gunicorn {{cookiecutter.app_name}}.wsgi:app
 ```
 
@@ -66,7 +66,7 @@ gunicorn {{cookiecutter.app_name}}.wsgi:app
 几乎和gunicorn一样：
 
 ```
-pip install uwsgi
+pipenv install uwsgi
 uwsgi --http 127.0.0.1:5000 --module {{cookiecutter.app_name}}.wsgi:app
 ```
 
