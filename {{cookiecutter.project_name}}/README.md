@@ -3,10 +3,10 @@
 {{cookiecutter.project_short_description}}
 
 
-## 创建虚拟环境
+## 创建虚拟环境并安装依赖库
 
 ```
-pipenv --three
+$ pipenv --three
 ```
 创建完虚拟环境后会在项目根目录下生成一个Pipfile文件， 将里面的Pypi源路径替换为国内阿里云的Pypi源：
 ```
@@ -33,9 +33,10 @@ $
 ## 在开发环境运行项目
 
 ```
-pipenv --three
-pipenv install
-flask run
+$ pipenv --three
+$ pipenv install
+$ pipenv shell
+(env)$ flask run
 ```
 
 就这样! 项目以端口`5000`运行。
@@ -45,8 +46,8 @@ flask run
 先将.env文件里的环境变量`FLASK_DEBUG`设置为`0`。
 
 ```
-pipenv --three
-pipenv install
+$ pipenv --three
+$ pipenv install
 ```
 
 
@@ -55,8 +56,9 @@ pipenv install
 项目提供了一个简单的wsgi入口，例如使用gunicorn或uwsgi运行。
 
 ```
-pipenv install gunicorn
-gunicorn {{cookiecutter.app_name}}.wsgi:app
+$ pipenv install gunicorn
+$ pipenv shell
+(env)$ gunicorn {{cookiecutter.app_name}}.wsgi:app
 ```
 
 就这样! gunicorn以端口`8000`运行项目。
@@ -66,8 +68,9 @@ gunicorn {{cookiecutter.app_name}}.wsgi:app
 几乎和gunicorn一样：
 
 ```
-pipenv install uwsgi
-uwsgi --http 127.0.0.1:5000 --module {{cookiecutter.app_name}}.wsgi:app
+$ pipenv install uwsgi
+$ pipenv shell
+(env)$ uwsgi --http 127.0.0.1:5000 --module {{cookiecutter.app_name}}.wsgi:app
 ```
 
 就这样! uwsgi以端口`5000`运行项目。
