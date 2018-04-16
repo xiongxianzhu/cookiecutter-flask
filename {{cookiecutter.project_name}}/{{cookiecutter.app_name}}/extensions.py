@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Extensions module. Each extension is initialized in the app factory located in app.py."""
 
+# from passlib.context import CryptContext
 from flask_bcrypt import Bcrypt
 from flask_caching import Cache
 from flask_debugtoolbar import DebugToolbarExtension
@@ -15,7 +16,7 @@ from flask_mail import Mail
 from flask_restful import Api
 from flask_celery import Celery
 
-bcrypt = Bcrypt()
+# pwd_context = CryptContext(schemes=['pbkdf2_sha256'], deprecated='auto')bcrypt = Bcrypt()
 csrf_protect = CSRFProtect()
 login_manager = LoginManager()
 db = SQLAlchemy()

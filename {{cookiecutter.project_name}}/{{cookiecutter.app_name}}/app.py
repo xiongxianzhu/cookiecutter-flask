@@ -3,7 +3,7 @@
 
 from flask import Flask, render_template
 
-from {{cookiecutter.app_name}} import commands
+from {{cookiecutter.app_name}} import auth, api, commands
 from {{cookiecutter.app_name}}.models import User
 from {{cookiecutter.app_name}}.extensions import bcrypt, cache, csrf_protect, db, debug_toolbar, login_manager, migrate, webpack, jwt, ma, mail, rest_api, celery
 from {{cookiecutter.app_name}}.config import ProdConfig
@@ -33,7 +33,7 @@ def register_extensions(app):
     login_manager.init_app(app)
     debug_toolbar.init_app(app)
     migrate.init_app(app, db)
-    webpack.init_app(app)
+    # webpack.init_app(app)
     jwt.init_app(app)
     # Flask-SQLAlchemy must be initialized before Flask-Marshmallow
     db.init_app(app)

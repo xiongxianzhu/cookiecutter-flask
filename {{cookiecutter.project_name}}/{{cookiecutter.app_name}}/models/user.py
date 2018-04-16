@@ -1,5 +1,6 @@
 # coding: utf-8
 
+import datetime
 
 from {{cookiecutter.app_name}}.extensions import db, bcrypt
 
@@ -13,7 +14,7 @@ class User(db.Model):
     email = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     active = db.Column(db.Boolean, default=True)
-    created_at = db.Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
     first_name = db.Column(db.String(30), nullable=True)
     last_name = db.Column(db.String(30), nullable=True)
     is_admin = db.Column(db.Boolean(), default=False)

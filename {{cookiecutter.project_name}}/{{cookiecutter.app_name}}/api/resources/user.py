@@ -9,7 +9,7 @@ from {{cookiecutter.app_name}}.extensions import ma, db
 from {{cookiecutter.app_name}}.commons.pagination import paginate
 
 
-class UserSchema(ma.ModelSchema):
+class UserSchema(ma.Schema):
 
     password = ma.String(load_only=True, required=True)
 

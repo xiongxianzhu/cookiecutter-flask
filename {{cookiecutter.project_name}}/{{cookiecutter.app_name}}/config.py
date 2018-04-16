@@ -27,6 +27,16 @@ class ProdConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/example'  # TODO: Change me
     DEBUG_TB_ENABLED = False  # Disable Debug toolbar
 
+    # mail
+    MAIL_SERVER = 'localhost'
+    MAIL_PORT = 25
+    MAIL_USERNAME = 'username'
+    MAIL_PASSWORD = 'password'
+
+    # celery
+    CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+    CELERY_BACKEND = 'amqp://guest:guest@localhost:5672//'
+
 
 class DevConfig(Config):
     """Development configuration."""
