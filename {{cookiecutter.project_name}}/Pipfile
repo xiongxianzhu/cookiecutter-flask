@@ -1,10 +1,10 @@
 [[source]]
-url = "http://mirrors.aliyun.com/pypi/simple"
+url = "https://pypi.python.org/simple"
 verify_ssl = true
 name = "pypi"
 
 [packages]
-flask = "==0.12.2"
+flask = "*"
 markupsafe = "==1.0"
 werkzeug = "==0.14.1"
 "jinja2" = "==2.10"
@@ -15,6 +15,9 @@ flask-sqlalchemy = "==2.3.2"
 "psycopg2" = "==2.7.4"
 sqlalchemy = "==1.2.6"
 mongoengine = "==0.15.0"
+coverage = "*"
+nose = "*"
+rednose = "*"
 flask-mongoengine = "==0.9.5"
 marshmallow = "*"
 flask-migrate = "==2.1.1"
@@ -25,7 +28,6 @@ flask-webpack = "==0.1.0"
 flask-login = "==0.4.1"
 flask-bcrypt = "==0.7.1"
 flask-jwt-extended = "*"
-celery = "*"
 flask-celery-helper = "*"
 flask-caching = "==1.3.3"
 redis = "==2.10.6"
@@ -44,7 +46,7 @@ flask-gravatar = "*"
 flask-uploads = "*"
 flask-script = "*"
 pillow = "*"
-python-dotenv = "*"
+celery = "*"
 
 [dev-packages]
 

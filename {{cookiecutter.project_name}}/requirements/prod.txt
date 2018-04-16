@@ -15,6 +15,9 @@ Flask-SQLAlchemy==2.3.2
 psycopg2==2.7.4
 SQLAlchemy==1.2.6
 mongoengine==0.15.0
+coverage
+nose
+rednose
 flask-mongoengine==0.9.5
 marshmallow
 
@@ -81,6 +84,3 @@ Flask-Script
 Pillow
 
 # tools
-python-dotenv
-
-
