@@ -3,18 +3,20 @@
 import datetime
 
 from {{cookiecutter.app_name}}.extensions import db, bcrypt
+from flask_login import AnonymousUserMixin
 
 
 class User(db.Model):
     """Basic user model"""
     
     __tablename__ = 'users'
+    
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
     email = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     active = db.Column(db.Boolean, default=True)
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now)
     first_name = db.Column(db.String(30), nullable=True)
     last_name = db.Column(db.String(30), nullable=True)
     is_admin = db.Column(db.Boolean(), default=False)
@@ -22,16 +24,41 @@ class User(db.Model):
     def __init__(self, **kwargs):
         """Create instance."""
         super(User, self).__init__(**kwargs)
+        if not self.id:
+            self.id = '{:%Y%m%d}{:0>8}'.format(datetime.now())
         if self.password:
             self.set_password(self.password)
         else:
             self.password = None
 
+    def __repr__(self):
+        """Represent instance as a unique string."""
+        # return "<User %s>" % self.username
+        # return '<User {})>'.format(self.username)
+        return '<User ({username!r})>'.format(username=self.username)
+
     def set_password(self, password):
         """Set password."""
         self.password = bcrypt.generate_password_hash(password)
 
-    def __repr__(self):
-        """Represent instance as a unique string."""
-        # return "<User %s>" % self.username
-        return '<User({username!r})>'.format(username=self.username)
+    def check_password(self, password):
+        """Check password"""
+        return bcrypt.check_password_hash(self.password, password)
+
+    def is_authenticated(self):
+        if isinstance(self, AnonymousUserMixin):
+            return False
+        else:
+            return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        if isinstance(self, AnonymousUserMixin):
+            return True
+        else:
+            return False
+
+    def get_id(self):
+        return unicode(self.id)

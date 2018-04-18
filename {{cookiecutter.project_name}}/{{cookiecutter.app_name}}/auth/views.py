@@ -31,7 +31,8 @@ def login():
 
     user = User.query.filter_by(username=username).first()
     # if user is None or not pwd_context.verify(password, user.password):
-    if user is None or not bcrypt.check_password_hash(password, user.password):
+    # if user is None or not bcrypt.check_password_hash(password, user.password):
+    if user is None or not user.check_password(password):
         return jsonify({"msg": "Bad credentials"}), 400
 
     access_token = create_access_token(identity=user.id)

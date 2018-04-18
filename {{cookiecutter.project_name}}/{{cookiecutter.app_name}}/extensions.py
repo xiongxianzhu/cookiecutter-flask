@@ -10,6 +10,7 @@ from flask_jwt_extended import JWTManager
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from flask_mongoengine import MongoEngine
 from flask_webpack import Webpack
 from flask_wtf.csrf import CSRFProtect
 from flask_mail import Mail
@@ -23,10 +24,11 @@ login_manager = LoginManager()
 db = SQLAlchemy()
 jwt = JWTManager()
 ma = Marshmallow()
+mongo = MongoEngine()
 migrate = Migrate()
 cache = Cache()
 debug_toolbar = DebugToolbarExtension()
 webpack = Webpack()
 mail = Mail()
-rest_api = Api()
+rest_api = Api(decorators=[csrf_protect.exempt])
 celery = Celery()

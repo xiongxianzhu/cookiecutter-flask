@@ -61,7 +61,11 @@ class UserList(Resource):
         if errors:
             return errors, 422
 
-        db.session.add(user)
+        username = request.json['username']
+        email = request.json['email']
+        password = request.json['password']
+        u = User(username=username, email=email, password=password)
+        db.session.add(u)
         db.session.commit()
 
         return {"msg": "user created", "user": schema.dump(user).data}, 201
