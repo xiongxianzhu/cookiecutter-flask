@@ -38,7 +38,7 @@ flask-webpack==0.1.0
 # Auth
 Flask-Login==0.4.1
 Flask-Bcrypt==0.7.1
-Flask-JWT-Extended
+Flask-JWT-Extended==3.7.2
 
 # message queue
 celery

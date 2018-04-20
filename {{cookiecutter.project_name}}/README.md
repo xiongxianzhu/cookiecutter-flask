@@ -58,6 +58,7 @@ $
 一旦你安装了你的dbms，运行以下命令创建你的应用程序的数据库表并执行初始迁移。
 
 ```
+rm -fr migrations
 flask db init
 flask db migrate
 flask db upgrade

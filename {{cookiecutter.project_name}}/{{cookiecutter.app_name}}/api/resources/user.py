@@ -11,16 +11,17 @@ from {{cookiecutter.app_name}}.commons.pagination import paginate
 
 class UserSchema(ma.Schema):
 
-    password = ma.String(load_only=True, required=True)
+    # password = ma.String(load_only=True, required=True)
 
     class Meta:
         model = User
         sqla_session = db.session
+        # Fields to expose
+        fields = ('username', 'email', 'password')
 
 
 class UserResource(Resource):
-    """Single object resource
-    """
+    """ Single object resource """
     method_decorators = [jwt_required]
 
     def get(self, user_id):
@@ -46,8 +47,7 @@ class UserResource(Resource):
 
 
 class UserList(Resource):
-    """Creation and get_all
-    """
+    """ Creation and get_all """
     method_decorators = [jwt_required]
 
     def get(self):
