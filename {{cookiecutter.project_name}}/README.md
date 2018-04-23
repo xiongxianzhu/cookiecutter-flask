@@ -5,6 +5,10 @@
 
 ## 安装依赖
 
+### 安装sqlite3相关依赖库
+
+如果数据库采用了sqlite3则需要安装sqlite3相关依赖库， 否则不用安装。
+
 For Ubuntu:
 
 ```
@@ -14,9 +18,8 @@ sudo apt-get install libsqlite3-dev sqlite3 -y
 For Centos:
 
 ```
-yum install -y sqlite-devel sqlite3
+yum install sqlite-devel sqlite3 -y
 ```
-
 
 ## 创建虚拟环境并安装依赖库
 

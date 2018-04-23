@@ -11,20 +11,6 @@ $ cookiecutter https://github.com/xiongxianzhu/cookiecutter-flask.git
 
 你将会被要求填写一些基本的项目信息。
 
-## 安装依赖
-
-For Ubuntu:
-
-```
-sudo apt-get install libsqlite3-dev
-```
-
-For Centos:
-
-```
-yum install sqlite-devel
-```
-
 ## 在开发环境运行项目
 
 ```
