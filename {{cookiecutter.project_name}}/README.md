@@ -2,6 +2,12 @@
 
 {{cookiecutter.project_short_description}}
 
+## 项目架构
+
+项目采用架构：
+```
+python3.6.5+flask+nginx(web服务器)+uwsgi(or gunicorn应用服务)+mongodb3.6(mysql5.7.21)+supervisor(进程管理)+fabric(rsync部署多主机)+celery+rabbitmq+redis
+```
 
 ## 安装依赖
 
