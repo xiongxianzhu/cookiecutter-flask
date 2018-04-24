@@ -28,7 +28,7 @@ class ProdConfig(Config):
     DEBUG_TB_ENABLED = False  # Disable Debug toolbar
 
     MONGODB_SETTINGS = {
-        'db': 'local',
+        'db': '{{cookiecutter.project_name | lower}}',
         'host': 'localhost',
         'port': 27017
     }
@@ -58,7 +58,7 @@ class DevConfig(Config):
     CACHE_TYPE = 'simple'  # Can be "memcached", "redis", etc.
 
     MONGODB_SETTINGS = {
-        'db': 'local',
+        'db': '{{cookiecutter.project_name | lower}}',
         'host': 'localhost',
         'port': 27017
     }
@@ -68,6 +68,7 @@ class DevConfig(Config):
     MAIL_PORT = 25
     MAIL_USERNAME = 'username'
     MAIL_PASSWORD = 'password'
+    MAIL_SUBJECT_PREFIX = 'xx科技'
 
     # celery
     CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
