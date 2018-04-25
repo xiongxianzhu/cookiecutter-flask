@@ -12,7 +12,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(80), unique=True, nullable=True)
     email = db.Column(db.String(80), unique=True, nullable=True)
     phone = db.Column(db.String(20), nullable=False)
-    password = db.Column(db.String(255), nullable=False)
+    password = db.Column(db.String(80), nullable=False)
     active = db.Column(db.Boolean, default=True)
     first_name = db.Column(db.String(30), nullable=True)
     last_name = db.Column(db.String(30), nullable=True)
@@ -38,6 +38,11 @@ class User(db.Model, UserMixin):
         return self.username
 
     @property
+    def is_active(self):
+        """ 是否激活 """
+        return True
+
+    @property
     def is_authenticated(self):
         """ 是否已登录认证 """
         # if isinstance(self, AnonymousUserMixin):
@@ -47,17 +52,13 @@ class User(db.Model, UserMixin):
         return False
 
     @property
-    def is_active(self):
-        """ 是否激活 """
-        return True
-
-    @property
     def is_anonymous(self):
         """ 是否游客 """
-        if isinstance(self, AnonymousUserMixin):
-            return True
-        else:
-            return False
+        # if isinstance(self, AnonymousUserMixin):
+        #     return True
+        # else:
+        #     return False
+        return False
 
     def get_id(self):
         """ 返回一个能够识别唯一用户的ID """
@@ -66,7 +67,8 @@ class User(db.Model, UserMixin):
 
     def set_password(self, password):
         """ 设置密码 """
-        self.password = bcrypt.generate_password_hash(password)
+        # 在python3中，你需要使用在generate_password_hash()上使用decode('utf-8')方法
+        self.password = bcrypt.generate_password_hash(password).decode('utf-8')
 
     def check_password(self, password):
         """ 加密密码 """
