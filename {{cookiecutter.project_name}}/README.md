@@ -9,6 +9,74 @@
 python3.6.5+flask+nginx(web服务器)+uwsgi(or gunicorn应用服务)+mongodb3.6(mysql5.7.21)+supervisor(进程管理)+fabric(rsync部署多主机)+celery+rabbitmq+redis
 ```
 
+## 项目目录结构详解
+
+```
+$ tree -a {{cookiecutter.project_name}}
+{{cookiecutter.project_name}}       # 项目目录
+├── autoapp.py                      # 项目开发环境程序启动主入口
+├── {{cookiecutter.app_name}}       # 应用目录
+│   ├── api                         # 通用API
+│   │   ├── __init__.py
+│   │   ├── resources
+│   │   │   ├── __init__.py
+│   │   │   └── user.py
+│   │   └── views.py
+│   ├── app.py                      # 程序初始化
+│   ├── auth                        # 认证
+│   │   ├── __init__.py
+│   │   └── views.py
+│   ├── celery_runner.py            # celery脚本
+│   ├── commands.py                 # 项目启动前所执行的命令
+│   ├── commons                     # 常用工具
+│   │   ├── __init__.py
+│   │   └── pagination.py
+│   ├── config.py                   # 配置文件
+│   ├── email.py                    # 邮件发送
+│   ├── extensions.py               # 扩展库实例化
+│   ├── forms                       # 表单
+│   │   └── __init__.py
+│   ├── __init__.py
+│   ├── logs                        # 日志
+│   ├── models                      # 模型
+│   │   ├── __init__.py
+│   │   └── user.py
+│   ├── static                      # 静态文件
+│   ├── templates                   # 模块
+│   │   ├── 401.html
+│   │   ├── 404.html
+│   │   ├── 500.html
+│   │   ├── footer.html
+│   │   ├── layout.html
+│   │   └── nav.html
+│   ├── themes                      # 主题
+│   ├── translations                # 多语言翻译
+│   ├── views                       # 视图
+│   │   └── __init__.py
+│   ├── webpack                     # 前端模块打包
+│   │   └── manifest.json
+│   └── wsgi.py                     # 生产环境启动项目的主入口
+├── data                            # 数据
+├── deploy                          # 部署
+├── docs                            # 文档
+├── .env                            # 虚拟环境中的环境变量
+├── HISTORY.rst                     # 版本更新历史记录
+├── migrations                      # 数据迁移
+├── package.json
+├── Pipfile                         # pipenv虚拟环境依赖相关文件
+├── Pipfile.lock                    # pipenv虚拟环境依赖相关文件
+├── README.md                       # 项目说明文档
+├── requirements                    # 项目开发环境与生产环境的依赖库及其版本
+│   ├── dev.txt
+│   └── prod.txt
+├── requirements.txt                # 项目开发环境与生产环境的依赖库及其版本
+├── setup.cfg
+├── setup.py.bak
+├── tests                           # 测试
+└── uwsgi.ini                       # 项目生产环境程序启动的uwsgi脚本
+
+```
+
 ## 安装依赖
 
 ### 安装sqlite3相关依赖库
