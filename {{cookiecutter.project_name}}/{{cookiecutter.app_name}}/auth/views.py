@@ -9,7 +9,7 @@ from flask_jwt_extended import (
 )
 
 from {{cookiecutter.app_name}}.models import User
-from {{cookiecutter.app_name}}.extensions import bcrypt, jwt, csrf_protect
+from {{cookiecutter.app_name}}.extensions import bcrypt, jwt
 # from {{cookiecutter.app_name}}.extensions import pwd_context
 
 
@@ -17,10 +17,8 @@ blueprint = Blueprint('auth', __name__, url_prefix='/auth')
 
 
 @blueprint.route('/login', methods=['POST'])
-@csrf_protect.exempt
 def login():
-    """Authenticate user and return token
-    """
+    """ Authenticate user and return token """
     if not request.is_json:
         return jsonify({"msg": "Missing JSON in request"}), 400
 
@@ -30,8 +28,6 @@ def login():
         return jsonify({"msg": "Missing username or password"}), 400
 
     user = User.query.filter_by(username=username).first()
-    # if user is None or not pwd_context.verify(password, user.password):
-    # if user is None or not bcrypt.check_password_hash(password, user.password):
     if user is None or not user.check_password(password):
         return jsonify({"msg": "Bad credentials"}), 400
 
@@ -47,7 +43,6 @@ def login():
 
 @blueprint.route('/refresh', methods=['POST'])
 @jwt_refresh_token_required
-@csrf_protect.exempt
 def refresh():
     current_user = get_jwt_identity()
     ret = {

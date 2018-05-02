@@ -71,5 +71,5 @@ class User(db.Model, UserMixin):
         self.password = bcrypt.generate_password_hash(password).decode('utf-8')
 
     def check_password(self, password):
-        """ 加密密码 """
+        """ 验证密码 """
         return bcrypt.check_password_hash(self.password, password)
