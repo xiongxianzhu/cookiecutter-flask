@@ -18,6 +18,15 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     WEBPACK_MANIFEST_PATH = 'webpack/manifest.json'
 
+    # 管理后台设置默认账号和密码
+    ADMIN_USER = 'admin'
+    ADMIN_PASSWORD = '123456'
+
+    SMSBAO_SETTINGS = dict(
+        user=os.environ.get('SMSBAO_USER', 'youruser'),
+        password=os.environ.get('SMSBAO_PASSWORD', 'yourpassword')
+    )
+
 
 class ProdConfig(Config):
     """Production configuration."""
@@ -73,6 +82,20 @@ class DevConfig(Config):
     # celery
     CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
     CELERY_BACKEND = 'amqp://guest:guest@localhost:5672//'
+
+    # Debug toolbar panels
+    DEBUG_TB_PANELS = [
+        'flask_mongoengine.panels.MongoDebugPanel',
+        'flask_debugtoolbar.panels.versionDebugPanel',
+        'flask_debugtoolbar.panels.timer.TimerDebugPanel',
+        'flask_debugtoolbar.panels.headers.HeaderDebugPanel',
+        'flask_debugtoolbar.panels.request_vars.RequestVarsDebugPanel',
+        'flask_debugtoolbar.panels.config_vars.ConfigVarsDebugPanel',
+        'flask_debugtoolbar.panels.template.TemplateDebugPanel',
+        'flask_debugtoolbar.panels.logger.LoggingPanel',
+        'flask_debugtoolbar.panels.route_list.RouteListDebugPanel',
+        'flask_debugtoolbar.panels.profiler.ProfilerDebugPanel',
+    ]
 
 
 

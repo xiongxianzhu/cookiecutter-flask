@@ -56,17 +56,6 @@ $ pipenv shell
 
 就这样! uwsgi以端口`5000`运行项目。
 
-## 测试
-
-在有setup.py文件目录下， 执行`tox`命令可生成tox.ini文件。
-
-```
-$ cd {{cookiecutter.project_name}}
-# Install tox
-$ sudo pip install tox
-# Run the test suites
-$ tox
-```
 
 ## 关于cookiecutter
 

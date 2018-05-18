@@ -184,7 +184,10 @@ $ pipenv shell
 ```
 $ pipenv install uwsgi
 $ pipenv shell
-(env)$ uwsgi --http 127.0.0.1:5000 --module {{cookiecutter.app_name}}.wsgi:app
+(env)$ uwsgi uwsgi.ini
+
+or
+(env)$ uwsgi --http 127.0.0.1:5000 --module xsea.wsgi:app
 ```
 
 就这样! uwsgi以端口`5000`运行项目。
