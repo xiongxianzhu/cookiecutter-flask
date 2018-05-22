@@ -87,3 +87,4 @@ Flask-Script==2.0.6
 Pillow==5.1.0
 
 # tools
+python-dotenv==0.8.2

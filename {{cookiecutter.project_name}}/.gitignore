@@ -2,4 +2,5 @@ env/
 *.pyc
 
 # dotenv
-.env
+# .env
+# .flaskenv
