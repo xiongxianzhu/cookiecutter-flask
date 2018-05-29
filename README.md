@@ -68,3 +68,6 @@ $ pipenv shell
 - cookiecutter-flask: https://github.com/sloria/cookiecutter-flask
 - cookiecutter-flask-restful: https://github.com/karec/cookiecutter-flask-restful
 
+## 参考文章
+
+- [使用Flask设计RESTful APIs](http://www.pythondoc.com/flask-restful/index.html)

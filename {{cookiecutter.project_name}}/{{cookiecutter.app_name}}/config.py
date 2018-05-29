@@ -86,7 +86,7 @@ class DevConfig(Config):
     # Debug toolbar panels
     DEBUG_TB_PANELS = [
         'flask_mongoengine.panels.MongoDebugPanel',
-        'flask_debugtoolbar.panels.versionDebugPanel',
+        'flask_debugtoolbar.panels.versions.VersionDebugPanel',
         'flask_debugtoolbar.panels.timer.TimerDebugPanel',
         'flask_debugtoolbar.panels.headers.HeaderDebugPanel',
         'flask_debugtoolbar.panels.request_vars.RequestVarsDebugPanel',

@@ -60,12 +60,30 @@ def register_errorhandlers(app):
     """ Register error handlers. """
 
     def render_error(error):
-        """ Render error template. """
+        """ 渲染HTML模板响应错误 """
+
         # If a HTTPException, pull the `code` attribute; default to 500
         error_code = getattr(error, 'code', 500)
         return render_template('{0}.html'.format(error_code)), error_code
-    for errcode in [401, 404, 500]:
-        app.errorhandler(errcode)(render_error)
+
+    def response_error(error):
+        """ 返回json响应错误"""
+        error_code = getattr(error, 'code', 500)
+        # https://docs.python.org/3/library/http.html#http.HTTPStatus
+        # error需要通过str()来序列化
+        # if error_code == 400:
+        #     return make_response(jsonify(dict(code=error_code, msg=str(error))), HTTPStatus.BAD_REQUEST)
+        # if error_code == 401:
+        #     return make_response(jsonify(dict(code=error_code, msg=str(error))), HTTPStatus.UNAUTHORIZED)
+        # if error_code == 404:
+        #     return make_response(jsonify(dict(code=error_code, msg=str(error))), HTTPStatus.NOT_FOUND)
+        # if error_code == 500:
+        #     return make_response(jsonify(dict(code=error_code, msg=str(error))), HTTPStatus.INTERNAL_SERVER_ERROR)
+        return make_response(jsonify(dict(code=error_code, msg=str(error))), error_code)
+
+    for errcode in [400, 401, 404, 500]:
+        # app.errorhandler(errcode)(render_error)
+        app.errorhandler(errcode)(response_error)
 
 
 def register_shellcontext(app):
