@@ -13,7 +13,10 @@ $ cookiecutter https://github.com/xiongxianzhu/cookiecutter-flask.git
 
 ## 在开发环境运行项目
 
+先将.env文件里的环境变量`FLASK_DEBUG`设置为`1`, `FLASK_ENV`设置为`development`。
+
 ```
+$ sudo pip install pipenv
 $ pipenv --three
 $ pipenv install
 $ pipenv shell
@@ -24,9 +27,10 @@ $ pipenv shell
 
 ## 在生产环境运行项目
 
-先将.env文件里的环境变量`FLASK_DEBUG`设置为`0`。
+先将.env文件里的环境变量`FLASK_DEBUG`设置为`0`, `FLASK_ENV`设置为`production`。
 
 ```
+$ sudo pip install pipenv
 $ pipenv --three
 $ pipenv install
 ```
