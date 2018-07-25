@@ -88,3 +88,6 @@ Pillow==5.1.0
 
 # tools
 python-dotenv==0.8.2
+
+# qrcode
+qrcode==6.0

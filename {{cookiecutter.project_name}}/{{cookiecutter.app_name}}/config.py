@@ -18,9 +18,11 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     WEBPACK_MANIFEST_PATH = 'webpack/manifest.json'
 
+    # site name and version
     SITE_NAME = '{{cookiecutter.site_name}}'
+    VERSION = '{{cookiecutter.version}}'
 
-    # 管理后台设置默认账号和密码
+    # admin user and password
     ADMIN_USER = 'admin'
     ADMIN_PASSWORD = '123456'
 
