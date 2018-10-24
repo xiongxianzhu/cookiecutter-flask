@@ -91,6 +91,7 @@ def register_shellcontext(app):
 
     def shell_context():
         """Shell context objects."""
+        # 将User import 导包到flask shell里的上下文
         return dict(db=db, User=User)
 
     app.shell_context_processor(shell_context)

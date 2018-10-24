@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Application configuration."""
 import os
+from datetime import timedelta
 
 
 class Config(object):
@@ -11,6 +12,8 @@ class Config(object):
     # SECRET_KEY = os.getenv('{{cookiecutter.project_name | upper}}_SECRET', default='secret-key')
     APP_DIR = os.path.abspath(os.path.dirname(__file__))  # This directory
     PROJECT_ROOT = os.path.abspath(os.path.join(APP_DIR, os.pardir))
+    FILE_FOLDER = os.path.join(PROJECT_ROOT, 'files')
+    DATA_FOLDER = os.path.join(PROJECT_ROOT, 'data')
     BCRYPT_LOG_ROUNDS = 13
     DEBUG_TB_ENABLED = False  # Disable Debug toolbar
     DEBUG_TB_INTERCEPT_REDIRECTS = False
@@ -25,6 +28,41 @@ class Config(object):
     # admin user and password
     ADMIN_USER = 'admin'
     ADMIN_PASSWORD = '123456'
+
+    BABEL_DEFAULT_LOCALE = 'zh_Hans_CN' # zh_CN or zh_Hans_CN
+    BABEL_DEFAULT_TIMEZONE = 'Asia/Shanghai'
+
+    MONGODB_SETTINGS = {
+        'db': '{{cookiecutter.project_name | lower}}',
+        'host': 'localhost',
+        'port': 27017
+    }
+
+    # 文件存储配置选项
+    MEDIA_PATH = ''        # 媒体存储路径, 如： '/home/xx/'
+    STORAGE_SETTINGS = dict(
+        storage_type='local',       # 存储类型
+        # base_extensions=dict(),
+        auto_remove=False,           # 默认原记录字段上传新文件是否需要删除旧文件
+        base_link='/uploads/%s',    # 虚拟路径
+        base_dir='uploads',         # 媒体文件存储目录名
+        base_path= MEDIA_PATH or FILE_FOLDER, # 媒体文件存储路径
+    )
+
+    # Debug toolbar panels
+    DEBUG_TB_PANELS = [
+        'flask_mongoengine.panels.MongoDebugPanel',
+        'flask_debugtoolbar.panels.versions.VersionDebugPanel',
+        'flask_debugtoolbar.panels.timer.TimerDebugPanel',
+        'flask_debugtoolbar.panels.headers.HeaderDebugPanel',
+        'flask_debugtoolbar.panels.request_vars.RequestVarsDebugPanel',
+        'flask_debugtoolbar.panels.config_vars.ConfigVarsDebugPanel',
+        'flask_debugtoolbar.panels.template.TemplateDebugPanel',
+        'flask_debugtoolbar.panels.logger.LoggingPanel',
+        'flask_debugtoolbar.panels.route_list.RouteListDebugPanel',
+        'flask_debugtoolbar.panels.profiler.ProfilerDebugPanel',
+        'flask_debugtoolbar.panels.profiler.ProfilerDebugPanel',
+    ]
 
     SMSBAO_SETTINGS = dict(
         user=os.environ.get('SMSBAO_USER', 'youruser'),
@@ -87,21 +125,6 @@ class DevConfig(Config):
     CELERY_BROKER_URL = 'amqp://guest:guest@localhost:5672//'
     CELERY_BACKEND = 'amqp://guest:guest@localhost:5672//'
 
-    # Debug toolbar panels
-    DEBUG_TB_PANELS = [
-        'flask_mongoengine.panels.MongoDebugPanel',
-        'flask_debugtoolbar.panels.versions.VersionDebugPanel',
-        'flask_debugtoolbar.panels.timer.TimerDebugPanel',
-        'flask_debugtoolbar.panels.headers.HeaderDebugPanel',
-        'flask_debugtoolbar.panels.request_vars.RequestVarsDebugPanel',
-        'flask_debugtoolbar.panels.config_vars.ConfigVarsDebugPanel',
-        'flask_debugtoolbar.panels.template.TemplateDebugPanel',
-        'flask_debugtoolbar.panels.logger.LoggingPanel',
-        'flask_debugtoolbar.panels.route_list.RouteListDebugPanel',
-        'flask_debugtoolbar.panels.profiler.ProfilerDebugPanel',
-    ]
-
-
 
 class TestConfig(Config):
     """Test configuration."""
@@ -111,3 +134,12 @@ class TestConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'sqlite://'
     BCRYPT_LOG_ROUNDS = 4  # For faster tests; needs at least 4 to avoid "ValueError: Invalid rounds"
     WTF_CSRF_ENABLED = False  # Allows form testing
+
+
+class AdminConfig(Config):
+    """ Admin configuration """
+    SESSION_COOKIE_NAME = '{{cookiecutter.project_name | lower}}.admin'
+    PERMANENT_SESSION_LIFETIME = timedelta(hours=24)
+    INDEX_REDIRECT = '/admin/'
+
+    DEBUG_TB_ENABLED = False
