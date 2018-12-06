@@ -8,8 +8,8 @@ class Config(object):
     """Base configuration."""
 
     # difference between os.getenv() and os.environ.get()
-    SECRET_KEY = os.environ.get('{{cookiecutter.project_name | upper}}_SECRET', 'secret-key')  # TODO: Change me
-    # SECRET_KEY = os.getenv('{{cookiecutter.project_name | upper}}_SECRET', default='secret-key')
+    # SECRET_KEY = os.environ.get('{{cookiecutter.project_name | upper}}_SECRET_KEY', 'yourSecretKey')
+    SECRET_KEY = os.getenv('{{cookiecutter.project_name | upper}}_SECRET_KEY', 'yourSecretKey')
     APP_DIR = os.path.abspath(os.path.dirname(__file__))  # This directory
     PROJECT_ROOT = os.path.abspath(os.path.join(APP_DIR, os.pardir))
     FILE_FOLDER = os.path.join(PROJECT_ROOT, 'files')
